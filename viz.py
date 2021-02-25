@@ -7,7 +7,6 @@ import matplotlib.gridspec as gridspec
 
 def show3Dpose(vals, num, color,gs):
     for n in range(num):
-
         x= vals[n,:,0]
         y= vals[n,:,1]
         z= vals[n,:,2]

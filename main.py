@@ -32,7 +32,6 @@ gs = gridspec.GridSpec(1, num) # 1 rows, n columns
 gs.update(wspace=-0.00, hspace=0.05) # set the spacing between axes.
 plt.axis('off')
 
-
 for i in range(pose_arr.shape[0]):
     
     show3Dpose(pose_arr[i],num,color,gs)
