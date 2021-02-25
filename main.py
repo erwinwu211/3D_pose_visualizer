@@ -4,12 +4,12 @@ import numpy as np
 from mpl_toolkits.mplot3d import Axes3D
 import matplotlib.gridspec as gridspec
 import argparse
-import viz
+from viz import show3Dpose
 
 
 color="#3498db"
-N_JOINT = 12 # total number of joint
-RADIUS = 10 # space around the subject
+N_JOINT = 17 # total number of joint
+
 parser = argparse.ArgumentParser()
 parser.add_argument("-f","--file_dir",type=str,default="./test.txt",help="Enter the path of input file.")
 parser.add_argument("-np","--is_npy",type=bool,default=False,help="Use NPY file input, CSV as default.")
@@ -34,29 +34,10 @@ plt.axis('off')
 
 
 for i in range(pose_arr.shape[0]):
-    for n in range(num):
-        x= pose_arr[i,n,:,0]
-        y= pose_arr[i,n,:,1]
-        z= pose_arr[i,n,:,2]
-        ax = plt.subplot(gs[n], projection='3d')
-        ax.plot(x, y, z, lw=2, c=color)
+    
+    show3Dpose(pose_arr[i],num,color,gs)
+    
 
-        if False:
-            ax.set_xlabel("x")
-            ax.set_ylabel("y")
-            ax.set_zlabel("z")
-
-        ax.set_xticks([])
-        ax.set_yticks([])
-        ax.set_zticks([])
-
-        ax.get_xaxis().set_ticklabels([])
-        ax.get_yaxis().set_ticklabels([])
-        ax.set_zticklabels([])
-
-        ax.set_xlim3d([-RADIUS, RADIUS])
-        ax.set_zlim3d([-RADIUS, RADIUS])
-        ax.set_ylim3d([-RADIUS, RADIUS])
     plt.show()
 
 
