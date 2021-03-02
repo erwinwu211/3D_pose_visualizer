@@ -11,14 +11,18 @@ color="#3498db"
 N_JOINT = 17 # total number of joint
 
 parser = argparse.ArgumentParser()
-parser.add_argument("-f","--file_dir",type=str,default="./test.txt",help="Enter the path of input file.")
-parser.add_argument("-np","--is_npy",type=bool,default=False,help="Use NPY file input, CSV as default.")
+parser.add_argument("-i","--file_dir",type=str,default="./test.txt",help="Enter the path of input pose file.")
+parser.add_argument("-p","--img_dir",type=str,default="",help="Enter the path of input img folder.")
+parser.add_argument("-npy","--is_npy",type=bool,default=False,help="Use NPY file input, CSV as default.")
 parser.add_argument("-n","--number",type=int,default=1,help="Number of Pose in one screen at the same time.")
 
 args = parser.parse_args()
 
 f_dir = args.file_dir
 num = args.number
+
+if not args.img_dir:
+    img_dir = args.img_dir
 
 if args.is_npy:
     pose_arr = np.load(f_dir)
